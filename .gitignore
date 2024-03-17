@@ -1,0 +1,8 @@
+feature_retrieval
+hubert_pretrain
+speaker_pretrain
+whisper_pretrain
+seperate
+test.wav
+crepe/assets
+sovits5.0.pth

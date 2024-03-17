@@ -7,12 +7,16 @@ cmd2 = 'python svc_inference.py --config configs/base.yaml --model sovits5.0.pth
 
 cmd3 = 'python combination.py'
 
+print('Begin Execute')
 # 执行第一个命令
 subprocess.run(cmd1, shell=True)
+print('Seperate Over')
 
 # 执行第二个命令
 subprocess.run(cmd2, shell=True)
+print('Infer Over')
 
 # 执行第三个命令
 subprocess.run(cmd3, shell=True)
+print('Combine Over')
 
