@@ -16,7 +16,9 @@ conda env create -f environment.yaml
     **注意：full.pth为84.9M，请确认文件大小无误**
 
 5.  下载分离程序预处理模型[spleeter]
-(https://pan.baidu.com/s/1LNuTvZO6sZcKhbxOb-Ls1w?pwd=3404), 把其中的内容放入seperate文件夹中，并按照其中的readme.txt配置环境变量
+(https://pan.baidu.com/s/1LNuTvZO6sZcKhbxOb-Ls1w?pwd=3404), 把其中的内容放入seperate文件夹中，并按照其中的readme.txt配置环境变量：
+    
+    添加环境变量 F:\（你存储的位置）\seperate\ffmpeg-20200831-4a11a6f-win64-static\bin
 
 
 ## 3.运行程序
