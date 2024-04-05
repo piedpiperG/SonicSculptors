@@ -61,7 +61,7 @@ if __name__ == "__main__":
     wavPath = args.wav
     vecPath = args.vec
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
     hubert = load_model(os.path.join(
         "hubert_pretrain", "hubert-soft-0d54a1f4.pt"), device)
     pred_vec(hubert, wavPath, vecPath, device)

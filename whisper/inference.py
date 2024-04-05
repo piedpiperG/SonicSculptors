@@ -73,6 +73,6 @@ if __name__ == "__main__":
     wavPath = args.wav
     ppgPath = args.ppg
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
     whisper = load_model(os.path.join("whisper_pretrain", "large-v2.pt"), device)
     pred_ppg(whisper, wavPath, ppgPath, device)

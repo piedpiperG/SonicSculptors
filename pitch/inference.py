@@ -127,7 +127,7 @@ if __name__ == "__main__":
     print(args.wav)
     print(args.pit)
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
     pitch = compute_f0_sing(args.wav, device)
     save_csv_pitch(pitch, args.pit)
     # tmp = load_csv_pitch(args.pit)

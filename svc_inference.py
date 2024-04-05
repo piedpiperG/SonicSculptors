@@ -158,7 +158,7 @@ def main(args):
     else:
         logging.basicConfig(level=logging.INFO)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
     hp = OmegaConf.load(args.config)
     model = SynthesizerInfer(
         hp.data.filter_length // 2 + 1,

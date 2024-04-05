@@ -6,3 +6,11 @@ seperate
 test.wav
 crepe/assets
 sovits5.0.pth
+combine.wav
+front
+tkinter/result
+svc_out.wav
+svc_out_pit.wav
+svc_tmp.pit.csv
+svc_tmp.ppg.npy
+svc_tmp.vec.npy

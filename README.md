@@ -26,4 +26,7 @@ conda env create -f environment.yaml
 将音色模型放入根目录下，将说话人模型放入data_svc/speaker
 运行Main.py，转换结束后的音频将以combine.wav出现在根目录下
 
+## 4.Tkinter运行
+运行tkinter/front.py程序即可
+
 
