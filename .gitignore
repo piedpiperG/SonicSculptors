@@ -8,7 +8,7 @@ crepe/assets
 sovits5.0.pth
 combine.wav
 front
-tkinter/result
+tkinter/result/combined.wav
 svc_out.wav
 svc_out_pit.wav
 svc_tmp.pit.csv
