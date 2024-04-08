@@ -10,6 +10,7 @@ combine.wav
 front
 tkinter/result/combined.wav
 svc_out.wav
+combined.wav
 svc_out_pit.wav
 svc_tmp.pit.csv
 svc_tmp.ppg.npy

@@ -10,4 +10,4 @@ audio2 = AudioSegment.from_file("seperate/output/test/accompaniment.wav")
 combined = audio1.overlay(audio2)
 
 # 导出合并后的音频文件
-combined.export("./tinker/result/combined.wav", format="wav")
+combined.export("./tkinter/result/combined.wav", format="wav")

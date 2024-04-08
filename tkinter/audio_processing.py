@@ -20,8 +20,8 @@ def process_audio(filepath, option):
     option = str(int(option) - 1)
 
     # 定义你的命令
-    cmd1 = 'python seperate.py'
-    cmd2 = f'python svc_inference.py --config configs/base.yaml --model sovits5.0.pth --spk ./data_svc/singer/speaker{option}.spk.npy --wave {filepath} --shift 0'
+    cmd1 = f'python seperate.py {filepath}'
+    cmd2 = f'python svc_inference.py --config configs/base.yaml --model sovits5.0.pth --spk ./data_svc/singer/speaker{option}.spk.npy --wave ./seperate/output/test/vocals.wav --shift 0'
     cmd3 = 'python combination.py'
 
     print('Begin Execute')
@@ -40,5 +40,6 @@ def process_audio(filepath, option):
     end_time = time.time()
     print(f'Process completed in {end_time - start_time:.2f} seconds.')
 
-    re_file_path = './result/combined.wav'
+    os.chdir(original_directory)
+    re_file_path = 'result/combined.wav'
     return re_file_path
