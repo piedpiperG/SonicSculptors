@@ -26,7 +26,7 @@ def process_audio(filepath, option):
 
     print('Begin Execute')
     # 执行第一个命令
-    # subprocess.run(cmd1, shell=True, env=os.environ)
+    subprocess.run(cmd1, shell=True, env=os.environ)
     print('Seperate Over')
 
     # 执行第二个命令
