@@ -1,4 +1,5 @@
-import sys,os
+import sys, os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 import argparse
@@ -45,7 +46,7 @@ def pred_ppg(whisper: Whisper, wavPath, ppgPath, device):
         with torch.no_grad():
             mel = mel + torch.randn_like(mel) * 0.1
             ppg = whisper.encoder(mel.unsqueeze(0)).squeeze().data.cpu().float().numpy()
-            ppg = ppg[:ppgln,]  # [length, dim=1024]
+            ppg = ppg[:ppgln, ]  # [length, dim=1024]
             ppg_a.extend(ppg)
     if (idx_s < audln):
         short = audio[idx_s:audln]
@@ -57,15 +58,15 @@ def pred_ppg(whisper: Whisper, wavPath, ppgPath, device):
         with torch.no_grad():
             mel = mel + torch.randn_like(mel) * 0.1
             ppg = whisper.encoder(mel.unsqueeze(0)).squeeze().data.cpu().float().numpy()
-            ppg = ppg[:ppgln,]  # [length, dim=1024]
+            ppg = ppg[:ppgln, ]  # [length, dim=1024]
             ppg_a.extend(ppg)
     np.save(ppgPath, ppg_a, allow_pickle=False)
 
 
-if __name__ == "__main__":
+def Whisper_inf(wave, ppg):
     parser = argparse.ArgumentParser()
-    parser.add_argument("-w", "--wav", help="wav", dest="wav", required=True)
-    parser.add_argument("-p", "--ppg", help="ppg", dest="ppg", required=True)
+    parser.add_argument("-w", "--wav", help="wav", dest="wav", required=False, default=wave)
+    parser.add_argument("-p", "--ppg", help="ppg", dest="ppg", required=False, default=ppg)
     args = parser.parse_args()
     print(args.wav)
     print(args.ppg)

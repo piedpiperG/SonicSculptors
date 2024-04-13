@@ -1,4 +1,5 @@
-import sys,os
+import sys, os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import torch
 import librosa
@@ -8,7 +9,7 @@ import crepe
 
 
 def move_average(a, n, mode="same"):
-    return (np.convolve(a, np.ones((n,))/n, mode=mode))
+    return (np.convolve(a, np.ones((n,)) / n, mode=mode))
 
 
 def compute_f0_mouth(path, device):
@@ -119,10 +120,10 @@ def load_csv_pitch(path):
     return pitch
 
 
-if __name__ == "__main__":
+def Pitch_inf(wave, pit):
     parser = argparse.ArgumentParser()
-    parser.add_argument("-w", "--wav", help="wav", dest="wav", required=True)
-    parser.add_argument("-p", "--pit", help="pit", dest="pit", required=True)  # csv for excel
+    parser.add_argument("-w", "--wav", help="wav", dest="wav", required=False, default=wave)
+    parser.add_argument("-p", "--pit", help="pit", dest="pit", required=False, default=pit)  # csv for excel
     args = parser.parse_args()
     print(args.wav)
     print(args.pit)

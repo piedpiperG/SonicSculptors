@@ -13,6 +13,10 @@ from vits.models import SynthesizerInfer
 from pitch import load_csv_pitch
 from feature_retrieval import IRetrieval, DummyRetrieval, FaissIndexRetrieval, load_retrieve_index
 
+from whisper.inference import Whisper_inf
+from hubert.inference import Hubert_inf
+from pitch.inference import Pitch_inf
+
 logger = logging.getLogger(__name__)
 
 
@@ -139,19 +143,19 @@ def main(args):
         args.ppg = "svc_tmp.ppg.npy"
         print(
             f"Auto run : python whisper/inference.py -w {args.wave} -p {args.ppg}")
-        os.system(f"python whisper/inference.py -w {args.wave} -p {args.ppg}")
+        Whisper_inf(args.wave, args.ppg)
 
     if (args.vec == None):
         args.vec = "svc_tmp.vec.npy"
         print(
             f"Auto run : python hubert/inference.py -w {args.wave} -v {args.vec}")
-        os.system(f"python hubert/inference.py -w {args.wave} -v {args.vec}")
+        Hubert_inf(args.wave, args.vec)
 
     if (args.pit == None):
         args.pit = "svc_tmp.pit.csv"
         print(
             f"Auto run : python pitch/inference.py -w {args.wave} -p {args.pit}")
-        os.system(f"python pitch/inference.py -w {args.wave} -p {args.pit}")
+        Pitch_inf(args.wave, args.pit)
 
     if args.debug:
         logging.basicConfig(level=logging.DEBUG)
@@ -203,16 +207,17 @@ def main(args):
     write("svc_out.wav", hp.data.sampling_rate, out_audio)
 
 
-if __name__ == '__main__':
+def Infer(option):
+    global args
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, required=True,
-                        help="yaml file for config.")
-    parser.add_argument('--model', type=str, required=True,
-                        help="path of model for evaluation")
-    parser.add_argument('--wave', type=str, required=True,
-                        help="Path of raw audio.")
-    parser.add_argument('--spk', type=str, required=True,
-                        help="Path of speaker.")
+    parser.add_argument('--config', type=str, required=False,
+                        help="yaml file for config.", default='configs/base.yaml')
+    parser.add_argument('--model', type=str, required=False,
+                        help="path of model for evaluation", default='sovits5.0.pth')
+    parser.add_argument('--wave', type=str, required=False,
+                        help="Path of raw audio.", default='./seperate/output/test/vocals.wav')
+    parser.add_argument('--spk', type=str, required=False,
+                        help="Path of speaker.", default=f'./data_svc/singer/speaker{option}.spk.npy')
     parser.add_argument('--ppg', type=str,
                         help="Path of content vector.")
     parser.add_argument('--vec', type=str,

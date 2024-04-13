@@ -1,6 +1,8 @@
 import os
 import time
 import subprocess
+from combination import combine
+from svc_inference import Infer
 
 
 def process_audio(filepath, option):
@@ -21,20 +23,18 @@ def process_audio(filepath, option):
 
     # 定义你的命令
     cmd1 = f'python seperate.py {filepath}'
-    cmd2 = f'python svc_inference.py --config configs/base.yaml --model sovits5.0.pth --spk ./data_svc/singer/speaker{option}.spk.npy --wave ./seperate/output/test/vocals.wav --shift 0'
-    cmd3 = 'python combination.py'
 
     print('Begin Execute')
     # 执行第一个命令
-    subprocess.run(cmd1, shell=True, env=os.environ)
+    # subprocess.run(cmd1, shell=True, env=os.environ)
     print('Seperate Over')
 
     # 执行第二个命令
-    subprocess.run(cmd2, shell=True, env=os.environ)
+    Infer(option)
     print('Infer Over')
 
-    # 执行第三个命令
-    subprocess.run(cmd3, shell=True, env=os.environ)
+    # 执行第三个步骤
+    combine()
     print('Combine Over')
 
     end_time = time.time()

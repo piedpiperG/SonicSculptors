@@ -50,10 +50,10 @@ def pred_vec(model, wavPath, vecPath, device):
     np.save(vecPath, vec_a, allow_pickle=False)
 
 
-if __name__ == "__main__":
+def Hubert_inf(wave, vec):
     parser = argparse.ArgumentParser()
-    parser.add_argument("-w", "--wav", help="wav", dest="wav", required=True)
-    parser.add_argument("-v", "--vec", help="vec", dest="vec", required=True)
+    parser.add_argument("-w", "--wav", help="wav", dest="wav", required=False, default=wave)
+    parser.add_argument("-v", "--vec", help="vec", dest="vec", required=False, default=vec)
     args = parser.parse_args()
     print(args.wav)
     print(args.vec)
